@@ -1,0 +1,5 @@
+.list {
+    padding: 0 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+}
