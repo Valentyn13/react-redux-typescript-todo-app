@@ -8,8 +8,13 @@ const CategoryList:React.FC = () => {
 
     return(
         <div className={styles.list}>
-            {categories.map((category) => <CategoryItem key={category.id} title={category.title} id={category.id} />)}
-            
+            {categories.map((category) => <CategoryItem
+             key={category.id} 
+             title={category.title} 
+             id={category.id} 
+             isSettingsActive={category.isSettingsActive} 
+             color={category.color}
+             />)}
         </div>
     ) 
 

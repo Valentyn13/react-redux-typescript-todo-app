@@ -1,9 +1,9 @@
 .item {
     padding: 8px;
     font-size: 18px;
-    margin: 10px 0;
+
     border: 1px solid black;
-    background-color: lightseagreen;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,10 +12,8 @@
 .svgIcon {
     cursor: pointer;
 }
-
-.colorInput {
-    border: none;
-    width: 25px;
-    margin-left: auto;
-    cursor: pointer;
+.itemWrapper {
+    position: relative;
+    margin: 10px 0;
 }
+ 

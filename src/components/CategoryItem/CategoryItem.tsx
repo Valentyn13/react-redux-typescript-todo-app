@@ -1,17 +1,48 @@
 import styles from './CategoryItem.module.css'
 import { Category } from '../../redux/slices/todoSlice'
 import { SlSettings } from "react-icons/sl";
+import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
+import { setCategorySettingsStatus } from '../../redux/slices/todoSlice';
+import { CategoryDropdown } from '../CategoryDropdown/CategoryDropdown';
 
-const CategoryItem:React.FC<Category> = ({title, id}) => {
+interface CategoryItemProps extends Category {
+    children?: JSX.Element|JSX.Element[];
+}
+const CategoryItem:React.FC<CategoryItemProps> = ({title, id, color}) => {
+    const _id = id
+ const dispatch = useAppDispatch()
+
+ const categories = useAppSelector(state =>state.todos.categories)
+
+ const openCategorySettings:React.MouseEventHandler<SVGElement> = () => {
+    dispatch(setCategorySettingsStatus( {
+        id,
+    }))
+ }
+
 
     return (
         <div className={styles.itemWrapper}>
-            <div className={styles.item}>
+            <div 
+            className={styles.item}
+            style={{backgroundColor:color}}
+            >
                 <p>{title}</p>
-                <SlSettings className={styles.svgIcon}/>
+                <SlSettings className={styles.svgIcon} onClick={openCategorySettings}/>
             </div>
-                {/* <input className={styles.colorInput} type='color'/> */}
-            
+            <>
+            {
+                categories.map(category => {
+                    console.log(category.isSettingsActive)
+                    if (category.isSettingsActive === true && category.id === id) {
+                        return (
+                            <CategoryDropdown id={_id}/>
+                        )
+                    }
+                })
+            }
+            </>
+
         </div>
 
     )

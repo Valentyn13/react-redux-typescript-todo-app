@@ -11,7 +11,10 @@ const CategoryInput:React.FC = () => {
 
     const addCategory:React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
-        dispatch(createCategory(categoryInputValue))
+        dispatch(createCategory({
+            title:categoryInputValue,
+            active:false,
+        }))
         setCategoryInputValue('')
     }
 
