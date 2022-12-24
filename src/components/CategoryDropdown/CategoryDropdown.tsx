@@ -1,26 +1,29 @@
 import styles from './CategoryDropdown.module.css'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks'
+import { useAppDispatch } from '../../redux/hooks/hooks'
 import { setCategorySettingsStatus } from '../../redux/slices/todoSlice'
 import { changeCategoryColor } from '../../redux/slices/todoSlice'
 import { setCategoryTitle } from '../../redux/slices/todoSlice'
+import { deleteCategory } from '../../redux/slices/todoSlice'
 import {useState} from 'react'
 
 type DropdownProps = {
     id:string;
+    title:string;
+    color:string;
 }
 
-const CategoryDropdown:React.FC<DropdownProps> = (props) => {
-    const {id} = props
-
+const CategoryDropdown:React.FC<DropdownProps> = ({id,title,color}) => {
+    // const {id} = props
     const dispatch = useAppDispatch()
 
-    const [reductValue, setReductValue] = useState('')
-    const [color, setColor] = useState('#000000')
+    const [reductValue, setReductValue] = useState(title)
+    const [newColor, setColor] = useState(color)
+
 
     const saveCategorySettings:React.MouseEventHandler<HTMLButtonElement> = () => {
         dispatch(changeCategoryColor({
             id,
-            newColor:color
+            newColor
         }))
 
         dispatch(setCategorySettingsStatus({
@@ -33,24 +36,43 @@ const CategoryDropdown:React.FC<DropdownProps> = (props) => {
             newTitle: reductValue,
         }))
       }
+
+      const handleDelete:React.MouseEventHandler<HTMLButtonElement> =() => {
+        dispatch(deleteCategory({
+            id
+        }))
+        console.log('paka')
+      }
+
     return (
+        // categories.map(category => {
+
+        // })
         <div className={styles.dropdown}>
         <input 
         className={styles.reductInput}
         value={reductValue}
         onChange={(e)=>setReductValue(e.target.value)}
+        maxLength={25}
         />
         <div className={styles.optionsWrapper}>
             <input 
             className={styles.colorInput}
             type='color'
-            value={color}
+            value={newColor}
             onChange={(e) => {
                 setColor(e.target.value) // string
             }}
             />
-
-            <button className={styles.saveButton} onClick={saveCategorySettings}>save</button>
+            <div className={styles.buttonWrapper}>
+            <button className={styles.saveButton} onClick={saveCategorySettings}>Save</button>
+            <button 
+            className={styles.deleteButton}
+            onClick={handleDelete}>
+            Delete
+            </button>
+            </div>
+            
         </div>
     </div>
     )

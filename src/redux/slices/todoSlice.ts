@@ -44,6 +44,10 @@ type setTitle = {
     id:string;
     newTitle:string
 }
+
+type DeleteAction = {
+    id:string;
+}
 const todoSlice = createSlice({
     name: 'todos',
     initialState,
@@ -86,11 +90,14 @@ const todoSlice = createSlice({
                     return category.title =  action.payload.newTitle
                 }
             })
+        },
+        deleteCategory: (state, action:PayloadAction<DeleteAction>) => {
+            state.categories =  state.categories.filter(category => category.id !== action.payload.id)
         }
     }
 })
 
-export const {createCategory, setCategorySettingsStatus, changeCategoryColor,setCategoryTitle} = todoSlice.actions
+export const {createCategory, setCategorySettingsStatus, changeCategoryColor,setCategoryTitle, deleteCategory} = todoSlice.actions
 export default todoSlice.reducer;
 
 

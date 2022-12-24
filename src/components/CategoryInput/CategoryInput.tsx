@@ -27,7 +27,8 @@ const CategoryInput:React.FC = () => {
                         value={categoryInputValue}
                         className={styles.styledInput} 
                         onChange={(e) => setCategoryInputValue(e.target.value)}
-                        type='text'/>  
+                        type='text'
+                        maxLength={25}/>  
                     <button className={styles.styeldButton}>Add category</button>  
                 </form>
             </div>

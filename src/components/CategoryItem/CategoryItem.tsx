@@ -27,7 +27,7 @@ const CategoryItem:React.FC<CategoryItemProps> = ({title, id, color}) => {
             className={styles.item}
             style={{backgroundColor:color}}
             >
-                <p>{title}</p>
+                <p style={{textAlign:'center'}}>{title}</p>
                 <SlSettings className={styles.svgIcon} onClick={openCategorySettings}/>
             </div>
             <>
@@ -36,7 +36,7 @@ const CategoryItem:React.FC<CategoryItemProps> = ({title, id, color}) => {
                     console.log(category.isSettingsActive)
                     if (category.isSettingsActive === true && category.id === id) {
                         return (
-                            <CategoryDropdown id={_id}/>
+                            <CategoryDropdown id={_id} title={title} color={color}/>
                         )
                     }
                 })
