@@ -1,13 +1,11 @@
 import styles from './CategoryItem.module.css'
-import { Category } from '../../redux/slices/todoSlice'
+import { Category } from '../../types/todoInitialStateTypes';
 import { SlSettings } from "react-icons/sl";
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { setCategorySettingsStatus } from '../../redux/slices/todoSlice';
 import { CategoryDropdown } from '../CategoryDropdown/CategoryDropdown';
 
-interface CategoryItemProps extends Category {
-    children?: JSX.Element|JSX.Element[];
-}
+interface CategoryItemProps extends Category {}
 const CategoryItem:React.FC<CategoryItemProps> = ({title, id, color}) => {
     const _id = id
  const dispatch = useAppDispatch()

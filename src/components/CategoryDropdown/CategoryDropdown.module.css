@@ -9,10 +9,12 @@
 
 .reductInput {
     display: block;
-    width: 100%;
+    width: 90%;
     font-size: 18px;
-    margin: 10px 0 12px 0;
+    margin: 10px auto 12px auto;
     padding: 5px;
+    border-bottom: 1px solid #474747;
+    background-color: transparent;
 
 }
 

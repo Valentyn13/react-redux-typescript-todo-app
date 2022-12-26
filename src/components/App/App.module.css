@@ -1,9 +1,10 @@
 .app {
     display: grid;
     grid-template-columns: 300px 1fr;
-    border-radius: 16px;
+    border-radius: 15px;
     overflow: hidden;
     height: 90vh;
     border: 1px solid black;
     padding: 8px;
+    column-gap: 15px;
 }

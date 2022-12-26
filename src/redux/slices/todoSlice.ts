@@ -1,53 +1,26 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-export type Category = {
-    id: string;
-    title:string;
-    isSettingsActive:boolean;
-    color: string;
-}
+import { TodosState } from '../../types/todoInitialStateTypes';
 
-type Todo = {
-    categoryId: string;
-    id:string;
-    title: string;
-    text: string;
-}
 
-type TodosState = {
-    categories: Category[];
-    todos: Todo[];
-}
+import { DeleteAction } from '../../types/categoryActionTypes';
+import { CreateCategoryAction } from '../../types/categoryActionTypes';
+import { SetSettingsStatusAction } from '../../types/categoryActionTypes';
+import { ChangeCategoryColor } from '../../types/categoryActionTypes';
+import { SetTitle } from '../../types/categoryActionTypes';
+import {IUseStateType} from '../../types/categoryActionTypes'
 
-const initialState: TodosState = {
+
+// Reducers action types
+
+interface  CreateTodoAction extends IUseStateType {
+    text:string;
+}
+export const initialState: TodosState = {
     categories:[],
     todos: [],
 }
 
-// Reducers action types
-type CreateCategoryAction = {
-    title:string;
-    active:boolean;
-}
-
-type SetSettingsStatusAction = {
-    id: string;
-    active?:boolean;
-}
-
-type ChangeCategoryColor = {
-    id:string;
-    newColor:string;
-}
-
-type setTitle = {
-    id:string;
-    newTitle:string
-}
-
-type DeleteAction = {
-    id:string;
-}
 const todoSlice = createSlice({
     name: 'todos',
     initialState,
@@ -81,7 +54,7 @@ const todoSlice = createSlice({
                 }
             })
         },
-        setCategoryTitle: (state, action:PayloadAction<setTitle>) => {
+        setCategoryTitle: (state, action:PayloadAction<SetTitle>) => {
             state.categories.map(category => {
                 if (category.id !== action.payload.id) {
                     return category
@@ -93,11 +66,29 @@ const todoSlice = createSlice({
         },
         deleteCategory: (state, action:PayloadAction<DeleteAction>) => {
             state.categories =  state.categories.filter(category => category.id !== action.payload.id)
+        },
+        createTodo: (state, action:PayloadAction<CreateTodoAction>) => {
+            state.todos.push({
+                categoryId: action.payload._id,
+                todoId: new Date().toISOString(),
+                title: action.payload.title,
+                text: action.payload.text,
+                categoryColor: action.payload.color,
+            })
         }
+
     }
 })
 
-export const {createCategory, setCategorySettingsStatus, changeCategoryColor,setCategoryTitle, deleteCategory} = todoSlice.actions
+export const {
+    createCategory,
+    setCategorySettingsStatus,
+    changeCategoryColor,
+    setCategoryTitle,
+    deleteCategory,
+    createTodo,
+    } = todoSlice.actions;
+
 export default todoSlice.reducer;
 
 

@@ -1,0 +1,63 @@
+.header {
+    margin-bottom: 20px;
+    background-color: lightseagreen;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.topHeader {
+    display: flex;
+    justify-content: space-between;
+    padding:10px 20px 10px 20px;
+    font-size: 24px;
+}
+.workArea {
+    padding:10px 20px 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.svgIcon {
+    margin-top: 2px;
+    font-size: 18px;
+}
+
+.customSelect {
+ position: relative;
+ width: 250px;
+ cursor: pointer;
+}
+
+.selectButton {
+    width: 250px;
+    cursor: pointer;
+    background-color: lightgreen;
+    padding: 10px;
+    text-align: center;
+    border:1px solid black ;
+}
+
+.options {
+background-color: bisque;
+border: 10px;
+padding: 15px;
+height: 300px;
+overflow-y: scroll;
+position: absolute;
+top:110%;
+left: 0;
+}
+
+.options::-webkit-scrollbar {
+    width: 0;
+}
+
+.formInput {
+margin-right: 20px;
+padding: 4px;
+}
+
+.formButton {
+padding: 4px;
+width: 100px;
+}

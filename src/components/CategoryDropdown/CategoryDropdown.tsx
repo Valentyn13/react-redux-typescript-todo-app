@@ -45,9 +45,6 @@ const CategoryDropdown:React.FC<DropdownProps> = ({id,title,color}) => {
       }
 
     return (
-        // categories.map(category => {
-
-        // })
         <div className={styles.dropdown}>
         <input 
         className={styles.reductInput}
