@@ -4,6 +4,7 @@ import { setCategorySettingsStatus } from '../../redux/slices/todoSlice'
 import { changeCategoryColor } from '../../redux/slices/todoSlice'
 import { setCategoryTitle } from '../../redux/slices/todoSlice'
 import { deleteCategory } from '../../redux/slices/todoSlice'
+import { hexToRGB } from '../MainTodos/MainTodos'
 import {useState} from 'react'
 
 type DropdownProps = {
@@ -45,7 +46,8 @@ const CategoryDropdown:React.FC<DropdownProps> = ({id,title,color}) => {
       }
 
     return (
-        <div className={styles.dropdown}>
+        <div className={styles.wrapper}>
+        <div className={styles.dropdown} style={{backgroundColor:hexToRGB(color,0.5)}}>
         <input 
         className={styles.reductInput}
         value={reductValue}
@@ -72,6 +74,8 @@ const CategoryDropdown:React.FC<DropdownProps> = ({id,title,color}) => {
             
         </div>
     </div>
+        </div>
+
     )
 }
 

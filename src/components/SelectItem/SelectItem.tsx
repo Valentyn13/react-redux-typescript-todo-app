@@ -22,7 +22,7 @@ const SelectItem:React.FC<SelectItemProps> = ({_id,title, color,selectCategory,o
         }}
          >
 
-        Category: {title}</div>
+        {title}</div>
     )
 }
 

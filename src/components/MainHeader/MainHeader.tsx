@@ -26,6 +26,8 @@ const MainHeader:React.FC = () => {
             color:selectedCategory.color,
             text:todosText
         }))   
+
+        setTodos('')
     }
 
 

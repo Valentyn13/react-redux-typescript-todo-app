@@ -1,4 +1,6 @@
 .app {
+    max-width: 1600px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 300px 1fr;
     border-radius: 15px;
