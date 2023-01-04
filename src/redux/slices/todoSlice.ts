@@ -20,7 +20,6 @@ export const initialState: TodosState = {
     categories:[],
     todos: [],
 }
-
 const todoSlice = createSlice({
     name: 'todos',
     initialState,
@@ -50,8 +49,14 @@ const todoSlice = createSlice({
                     return category
                 } 
                 if (category.id === action.payload.id) {
+                    state.todos.map(todo => {
+                        if (todo.categoryId === action.payload.id) {
+                            todo.categoryColor = action.payload.newColor
+                        }
+                    })
                     return category.color =  action.payload.newColor
                 }
+
             })
         },
         setCategoryTitle: (state, action:PayloadAction<SetTitle>) => {
@@ -60,6 +65,11 @@ const todoSlice = createSlice({
                     return category
                 } 
                 if (category.id === action.payload.id) {
+                    state.todos.map(todo => {
+                        if (todo.categoryId === action.payload.id) {
+                            todo.title = action.payload.newTitle
+                        }
+                    })
                     return category.title =  action.payload.newTitle
                 }
             })
@@ -68,15 +78,23 @@ const todoSlice = createSlice({
             state.categories =  state.categories.filter(category => category.id !== action.payload.id)
         },
         createTodo: (state, action:PayloadAction<CreateTodoAction>) => {
-            state.todos.push({
-                categoryId: action.payload._id,
-                todoId: new Date().toISOString(),
-                title: action.payload.title,
-                text: action.payload.text,
-                categoryColor: action.payload.color,
+            state.categories.map(category => {
+                if (category.id === action.payload._id) {
+                    state.todos.push({
+                        categoryId: action.payload._id,
+                        todoId: new Date().toISOString(),
+                        title: category.title,
+                        text: action.payload.text,
+                        categoryColor:category.color,
+                    })
+                }
             })
-        }
+            // const selectedCategory =  state.categories.find(category => category.id === action.payload._id)
 
+        },
+        deleteTodo: (state, action:PayloadAction<string>) => {
+            state.todos = state.todos.filter(todo => todo.todoId !== action.payload)
+        },
     }
 })
 
@@ -87,6 +105,7 @@ export const {
     setCategoryTitle,
     deleteCategory,
     createTodo,
+    deleteTodo,
     } = todoSlice.actions;
 
 export default todoSlice.reducer;

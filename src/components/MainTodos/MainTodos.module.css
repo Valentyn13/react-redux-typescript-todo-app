@@ -3,7 +3,7 @@
 max-width: 1400px;
 margin: 0 auto;
  height: calc(100% - 120px) ;
- background-color: rgb(124, 171, 218);
+ background-color: rgb(131, 157, 206);
  border-radius: 15px;
 }
 .todosContainer {

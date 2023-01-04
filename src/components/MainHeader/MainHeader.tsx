@@ -22,8 +22,6 @@ const MainHeader:React.FC = () => {
 
         dispatch(createTodo({
             _id:selectedCategory._id,
-            title:selectedCategory.title,
-            color:selectedCategory.color,
             text:todosText
         }))   
 
@@ -43,7 +41,7 @@ const MainHeader:React.FC = () => {
                     <div 
                     className={styles.selectButton}
                     onClick={() => setOptionActive(!optionsActive)}
-                    >{ selectedCategory.title === ''? 'Select category': selectedCategory.title }</div>
+                    >{ selectedCategory.title === '' ? 'Select category': selectedCategory.title }</div>
                     {
                         optionsActive && (
                             <div className={styles.options}>

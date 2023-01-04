@@ -28,6 +28,6 @@ export type DeleteAction = {
 
 export type IUseStateType = {
     _id:string;
-    title:string;
-    color:string;
+    title?:string;
+    color?:string;
 }

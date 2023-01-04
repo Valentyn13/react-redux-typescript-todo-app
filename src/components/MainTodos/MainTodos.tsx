@@ -1,7 +1,8 @@
-import { useAppSelector } from "../../redux/hooks/hooks"
+import { useAppSelector, useAppDispatch } from "../../redux/hooks/hooks"
 import styles from "./MainTodos.module.css"
 import {RiEditFill} from 'react-icons/ri'
 import {FaTrashAlt} from 'react-icons/fa'
+import { deleteTodo } from "../../redux/slices/todoSlice";
 
 
  export function hexToRGB(hex:string, alpha:number): string {
@@ -16,8 +17,13 @@ import {FaTrashAlt} from 'react-icons/fa'
     }
 }
 
+
+
 const MainTodos:React.FC = () => {
     const todosList = useAppSelector(state => state.todos.todos)
+    const dispatch = useAppDispatch()
+
+    
     return (
 
         <div className={styles.mainWrapper}>
@@ -33,8 +39,10 @@ const MainTodos:React.FC = () => {
                                 >{todo.title}</div>
                                 <p className={styles.text}>{todo.text}</p>
                                 <div className={styles.iconContainer}>
-                                    <RiEditFill />
-                                    <FaTrashAlt />
+                                    <RiEditFill style={{cursor:'pointer'}} />
+                                    <FaTrashAlt onClick={()=> dispatch(deleteTodo(todo.todoId))}
+                                    style={{cursor:'pointer'}}
+                                    />
                                 </div>
                             </div>
 
