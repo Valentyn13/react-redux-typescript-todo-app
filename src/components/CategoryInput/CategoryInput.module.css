@@ -7,7 +7,9 @@
     font-weight: 600;
     margin: 12px 0;
 }
-
+.categoryHeader:hover {
+ text-decoration:underline;
+}
 .formControl {
     margin: 12px 0;
 }
@@ -17,9 +19,23 @@
     height: 30px;
     margin: 10px 0;
 }
+.styledInput:hover{
+    border-radius: 7px;
+}
+.styledInput:focus{
+    border: 1px solid black;
+    background-color: rgb(202, 230, 240);
+}
 
 .styeldButton {
     width: 100%;
     padding: 8px;
     font-size: 16px;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.styeldButton:hover{
+    transform: scale(1.04);
+    background-color: rgb(233, 245, 247);
 }

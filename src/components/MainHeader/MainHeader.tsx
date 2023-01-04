@@ -13,7 +13,7 @@ const MainHeader:React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<IUseStateType>({
         _id:'',
         title:'',
-        color:''
+        color:'	0EB2A9'
     })
     const [todosText, setTodos] = useState('')
 
@@ -39,6 +39,7 @@ const MainHeader:React.FC = () => {
             <div className={styles.workArea}>
                 <div className={styles.customSelect}>
                     <div 
+                    style={{backgroundColor:selectedCategory.color}}
                     className={styles.selectButton}
                     onClick={() => setOptionActive(!optionsActive)}
                     >{ selectedCategory.title === '' ? 'Select category': selectedCategory.title }</div>
@@ -62,7 +63,7 @@ const MainHeader:React.FC = () => {
                     <button 
                     className={styles.formButton}
                     onClick={createTodos}
-                    >save</button>
+                    >Save</button>
                 </form>
             </div>
 

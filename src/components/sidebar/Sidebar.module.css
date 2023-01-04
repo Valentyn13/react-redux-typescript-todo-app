@@ -2,3 +2,7 @@
     background-color: lightblue ;
     border-radius: 15px;
 }
+
+.sidebar:hover {
+    transform: scale(1.002);
+}

@@ -59,8 +59,8 @@ const MainTodos:React.FC = () => {
                                     !inputActive && (<p className={styles.text}>{todo.text}</p>)
                                 }
                                 <div className={styles.iconContainer}>
-                                    <RiEditFill style={{cursor:'pointer'}} onClick={() =>setInputActive(!inputActive)} />
-                                    <FaTrashAlt onClick={()=> dispatch(deleteTodo(todo.todoId))}
+                                    <RiEditFill className={styles.todoIcons} style={{cursor:'pointer'}} onClick={() =>setInputActive(!inputActive)} />
+                                    <FaTrashAlt className={styles.todoIcons} onClick={()=> dispatch(deleteTodo(todo.todoId))}
                                     style={{cursor:'pointer'}}
                                     />
                                 </div>

@@ -6,6 +6,11 @@ margin: 0 auto;
  background-color: rgb(131, 157, 206);
  border-radius: 15px;
 }
+
+.todoWrapper:hover {
+ transform: scale(1.06);
+ transition: 0.2s;
+}
 .todosContainer {
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -60,4 +65,12 @@ margin: 0 auto;
     border: none;
     color: green;
     background-color: transparent;
+}
+.todoIcons {
+    color: rgb(163, 163, 161);
+}
+
+.todoIcons:hover {
+    transform: scale(1.1);
+    color: rgb(82, 82, 81);
 }

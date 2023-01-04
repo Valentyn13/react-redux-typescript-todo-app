@@ -1,5 +1,10 @@
 .item {
-    margin: 5px 0;
+    margin: 5px 0px 12px 0px;
     padding: 5px;
     font-size: 18px;
+    border-radius: 3px;
+}
+
+.item:hover {
+transform: scale(1.06);
 }

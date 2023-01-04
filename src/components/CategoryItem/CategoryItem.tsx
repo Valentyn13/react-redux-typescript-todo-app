@@ -6,6 +6,7 @@ import { setCategorySettingsStatus } from '../../redux/slices/todoSlice';
 import { CategoryDropdown } from '../CategoryDropdown/CategoryDropdown';
 
 interface CategoryItemProps extends Category {}
+
 const CategoryItem:React.FC<CategoryItemProps> = ({title, id, color}) => {
     const _id = id
  const dispatch = useAppDispatch()
