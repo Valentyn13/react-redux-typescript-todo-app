@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import { TodosState } from '../../types/todoInitialStateTypes';
+import { TodosState, EditTodoText } from '../../types/todoInitialStateTypes';
 
 
 import { DeleteAction } from '../../types/categoryActionTypes';
@@ -88,12 +88,21 @@ const todoSlice = createSlice({
                         categoryColor:category.color,
                     })
                 }
+                
             })
-            // const selectedCategory =  state.categories.find(category => category.id === action.payload._id)
-
         },
         deleteTodo: (state, action:PayloadAction<string>) => {
             state.todos = state.todos.filter(todo => todo.todoId !== action.payload)
+        },
+        editTodo: (state, action:PayloadAction<EditTodoText>) => {
+            state.todos.map(todo => {
+                if(todo.todoId !== action.payload.id) {
+                    return todo
+                }
+                if( todo.todoId === action.payload.id) {
+                    return todo.text = action.payload.newText
+                }
+            })
         },
     }
 })
@@ -106,6 +115,7 @@ export const {
     deleteCategory,
     createTodo,
     deleteTodo,
+    editTodo,
     } = todoSlice.actions;
 
 export default todoSlice.reducer;

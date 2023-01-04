@@ -43,3 +43,21 @@ margin: 0 auto;
     font-size: 18px;
     margin: 5px 0 35px 0;
 }
+
+.input {
+    height: 25px;
+}
+
+.reductWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0 28px 0;
+}
+
+.icon {
+    font-size: 18px;
+    border: none;
+    color: green;
+    background-color: transparent;
+}

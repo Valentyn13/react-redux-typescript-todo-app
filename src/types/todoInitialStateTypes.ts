@@ -18,3 +18,7 @@ export type TodosState = {
     todos: Todo[];
 }
 
+export type EditTodoText = {
+    id:string;
+    newText: string;
+}
